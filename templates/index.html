@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         *{
             margin: 0px;
@@ -15,7 +16,7 @@
             justify-content: space-evenly;
             align-items: center;
         }
-        .pokemon{
+        .produto{
             width: 150px;
             height: 170px;
             text-align: center;
@@ -24,18 +25,29 @@
             border-radius: 5px;
             padding: 20px;
         }
-        .pokemon img{
-            width: 100%;
+        .red{
+            background-color: red;
+            color: white;
+            display: inline;
         }
     </style>
 </head>
 <body>
-    {% for nome, preco in produtos %}
-        <div class="produtos">
-            <h3>{{ nome }}</h3>
-            <h3>{{preco}}</h3>
-        </div>
-        
-    {%endfor%}
+    <table class="w3-table-all">
+        <tr>
+            <td>Nome</td>
+            <td>Preço</td>
+        </tr>
+        {% for nome, val in produtos %}
+            <tr>
+                <td>{{ nome }}</td>
+                {%if val < 5 %}
+                    <td>{{ val }}</td>
+                {% else %}
+                    <td class="red">{{ val }}</td>
+                {% endif %}
+            </tr>
+        {%endfor%}
+    </table>
 </body>
 </html>
